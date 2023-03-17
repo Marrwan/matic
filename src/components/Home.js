@@ -175,7 +175,7 @@ function Dashboard() {
     Dashboard
     <small><span className='' style={{color: "#f19107"}}>Hi ! 737251</span></small>
     <br />
-    <small><span className='' style={{color: "#f19107"}}>TRbzZEXSaQSteTrAK8jpNrpL4KD4i5hFu6</span></small>
+    <small><span className='' style={{color: "#f19107"}}>0x10d5942b2ca94f50d8a517d645fd26e3dc601e85</span></small>
 
   </h6>
   <div className="row">
