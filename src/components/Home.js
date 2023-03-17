@@ -313,7 +313,7 @@ function Dashboard() {
         <input
           type="text"
           className="form-control bg-dark border-0 text-white"
-          value="https://dreamastral.io/User/Signup?referral=TRbzZEXSaQSteTrAK8jpNrpL4KD4i5hFu6"
+
           readonly
           style={{color: "#fff"}}
           />
@@ -332,7 +332,7 @@ function Dashboard() {
               type="hidden"
               name="reflink"
               id="reflink"
-              value="https://dreamastral.io/User/Signup?referral=TRbzZEXSaQSteTrAK8jpNrpL4KD4i5hFu6"
+              
               className='form-control'
               />
               </div>
