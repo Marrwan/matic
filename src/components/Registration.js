@@ -1,18 +1,42 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import $ from 'jquery';
 import logo from '../img/logo.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import '../css/style.css';
+import { detectEthereumProvider } from '@metamask/detect-provider';
 
 function RegistrationForm() {
-  const [sponcerId, setSponcerId] = useState('TRbzZEXSaQSteTrAK8jpNrpL4KD4i5hFu6');
+  const [sponcerId, setSponcerId] = useState('0x10d5942b2ca94f50d8a517d645fd26e3dc601e85');
   const [sPackage, setSPackage] = useState(30);
   const [walletAddress, setWalletAddress] = useState('');
-  const [trxBalance, setTrxBalance] = useState('');
+  const [maticBalance, setmaticBalance] = useState('');
   const [tokenBalance, setTokenBalance] = useState('');
 
   useEffect(() => {
+    async function connectToWallet() {
+      // Detect the MetaMask provider
+      const provider = await detectEthereumProvider();
+
+      // If MetaMask is not installed or not available, display an error message
+      if (!provider) {
+        alert('Please install MetaMask to connect to your wallet.');
+        return;
+      }
+
+      // Request permission to connect to the user's wallet
+      const accounts = await provider.request({ method: 'eth_requestAccounts' });
+
+      // Retrieve the user's wallet address
+      const address = accounts[0];
+
+      // Use the address as needed (e.g. store it in a state variable, display it on the website, etc.)
+      console.log(`Wallet address: ${address}`);
+      setWalletAddress(address);
+    }
+
+    connectToWallet();
         // Initialize Owl Carousel
         // $(".owl-carousel").owlCarousel({
         //   items: 1,
@@ -41,9 +65,9 @@ function RegistrationForm() {
         //   },
         // });
     
-        // Load TRX balance and token balance from API
+        // Load matic balance and token balance from API
         $.getJSON("https://api.example.com/balance", (data) => {
-          setTrxBalance(data.trx);
+          setmaticBalance(data.matic);
           setTokenBalance(data.token);
         });
       }, []);
@@ -52,7 +76,7 @@ function RegistrationForm() {
           // Use jQuery to fetch data from server API
           $.get('/api/walletData', (data) => {
       setWalletAddress(data.walletAddress);
-      setTrxBalance(data.trxBalance);
+      setmaticBalance(data.maticBalance);
       setTokenBalance(data.tokenBalance);
     });
   };
@@ -113,7 +137,7 @@ function RegistrationForm() {
                     placeholder="Wallet Address"
                     readOnly
                   />
-                  <input type="hidden" name="trxbalance" id="trxbalance" />
+                  <input type="hidden" name="maticbalance" id="maticbalance" />
                 </div>
                 <input type="hidden" id="tokenbalance" />
                 <button

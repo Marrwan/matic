@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-distracting-elements */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import logo from '../img/logo.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
